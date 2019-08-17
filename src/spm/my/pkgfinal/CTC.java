@@ -15,7 +15,16 @@ import java.util.Scanner;
  *
  * @author Fasrin
  */
-public class CTCandCNC {
+public class CTC {
+    
+    	int complexity = 0;
+        int ifCount = 0;
+        int catchCount = 0;
+        int forCount = 0;
+        int whileCount = 0;
+        int doWhileCount = 0;
+	int totalcomplexity = 0;
+        
         private static File file;
 	private static final List<String> invalidVariablesList = new ArrayList<>();
 	private static final List<String> ifValidVariablesList = new ArrayList<>();
@@ -34,7 +43,7 @@ public class CTCandCNC {
 	private static final List<String> operatorKeywordsList = Arrays.asList(operatorKeywords);
 	private static final List<String> caseKeywordsList = Arrays.asList(caseKeywords);
     
-	public CTCandCNC() {
+	public CTC() {
 		this.file = new File("C:\\Users\\Fasrin\\Documents\\NetBeansProjects\\SPM - My Final\\src\\spm\\my\\pkgfinal\\MyException.java");
 	}
 
@@ -72,86 +81,56 @@ public class CTCandCNC {
 					if ( word.contains("if")) {
 						if (isNumeric(word)) {
 							ifValidVariablesList.add(word);
+                                                        complexity = complexity + 1;
+                                                        ifCount = ifCount + 1;
 						} else if (ifCatchKeywordsList.contains(word)) {
 							ifValidVariablesList.add(word);
-						} else if (forWhileKeywordsList.contains(word)) {
-							ifValidVariablesList.add(word);
-						} else if (operatorKeywordsList.contains(word)) {
-							ifValidVariablesList.add(word);
-						} else if (caseKeywordsList.contains(word)) {
-							ifValidVariablesList.add(word);
-						} else if (invalidVariablesList.contains(word)) {
-							ifValidVariablesList.remove(word);
-						} else {
-							ifValidVariablesList.add(word);
+                                                         complexity = complexity + 1;
+                                                        ifCount = ifCount + 1;
 						}
 					}
 					if ( word.contains("catch")) {
 						if (isNumeric(word)) {
 							catchValidVariablesList.add(word);
+                                                         complexity = complexity + 1;
+                                                         catchCount = catchCount + 1;
 						} else if (ifCatchKeywordsList.contains(word)) {
 							catchValidVariablesList.add(word);
-						} else if (forWhileKeywordsList.contains(word)) {
-							catchValidVariablesList.add(word);
-						} else if (operatorKeywordsList.contains(word)) {
-							catchValidVariablesList.add(word);
-						} else if (caseKeywordsList.contains(word)) {
-							catchValidVariablesList.add(word);
-						} else if (invalidVariablesList.contains(word)) {
-							catchValidVariablesList.remove(word);
-						} else {
-							catchValidVariablesList.add(word);
+                                                         complexity = complexity + 1;
+                                                         catchCount = catchCount + 1;
 						}
 					}   
 					if ( word.contains("for")) {
 						if (isNumeric(word)) {
 							forValidVariablesList.add(word);
-						} else if (ifCatchKeywordsList.contains(word)) {
-							forValidVariablesList.add(word);
+                                                         complexity = complexity + 2;
+                                                         forCount = forCount + 1;
 						} else if (forWhileKeywordsList.contains(word)) {
 							forValidVariablesList.add(word);
-						} else if (operatorKeywordsList.contains(word)) {
-							forValidVariablesList.add(word);
-						} else if (caseKeywordsList.contains(word)) {
-							forValidVariablesList.add(word);
-						} else if (invalidVariablesList.contains(word)) {
-							forValidVariablesList.remove(word);
-						} else {
-							forValidVariablesList.add(word);
+                                                         complexity = complexity + 2;
+                                                         forCount = forCount + 1;
 						}
 					}
 					if ( word.contains("while")) {
 						if (isNumeric(word)) {
 							whileValidVariablesList.add(word);
-						} else if (ifCatchKeywordsList.contains(word)) {
-							whileValidVariablesList.add(word);
+                                                         complexity = complexity + 2;
+                                                         whileCount = whileCount + 1;
 						} else if (forWhileKeywordsList.contains(word)) {
 							whileValidVariablesList.add(word);
-						} else if (operatorKeywordsList.contains(word)) {
-							whileValidVariablesList.add(word);
-						} else if (caseKeywordsList.contains(word)) {
-							whileValidVariablesList.add(word);
-						} else if (invalidVariablesList.contains(word)) {
-							whileValidVariablesList.remove(word);
-						} else {
-							whileValidVariablesList.add(word);
+                                                         complexity = complexity + 2;
+                                                         whileCount = whileCount + 1;
 						}
 					}
-					if ( word.contains("do-while")) {
+					if ( word.contains("do while")) {
 						if (isNumeric(word)) {
 							doWhileValidVariablesList.add(word);
-						} else if (ifCatchKeywordsList.contains(word)) {
-							doWhileValidVariablesList.add(word);
+                                                         complexity = complexity + 2;
+                                                         doWhileCount = doWhileCount + 1;
 						} else if (forWhileKeywordsList.contains(word)) {
 							doWhileValidVariablesList.add(word);
-						} else if (operatorKeywordsList.contains(word)) {
-							doWhileValidVariablesList.add(word);
-						} else if (caseKeywordsList.contains(word)) {
-							doWhileValidVariablesList.add(word);
-						} else if (invalidVariablesList.contains(word)) {
-							doWhileValidVariablesList.remove(word);
-						} else {
-							doWhileValidVariablesList.add(word);
+                                                         complexity = complexity + 2;
+                                                         doWhileCount = doWhileCount + 1;
 						}
 					} 
 				}
@@ -163,30 +142,38 @@ public class CTCandCNC {
                                 System.out.println("WHILE Complexity : " + whileValidVariablesList.size());
                                 System.out.println("DO-WHILE Complexity : " + doWhileValidVariablesList.size());
                                 
-                                
-//                                String[] itemsArray = new String[ifValidVariablesList.size()];
-//                                itemsArray = ifValidVariablesList.toArray(itemsArray);
-//                                
-//                                System.out.println(itemsArray);
-//                                    
-//                                List<Integer> numbers = Arrays.asList("ifValidVariablesList");
-//                                Integer[] integers = numbers.toArray(new Integer[numbers.size()]);                                
-
-
+                      
 				ifValidVariablesList.clear();
                                 catchValidVariablesList.clear();
                                 forValidVariablesList.clear();
                                 whileValidVariablesList.clear();
                                 doWhileValidVariablesList.clear();
 			}
-
+                        totalcomplexity = totalcomplexity+complexity;
+                         
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
+                
+                            
+                      System.out.println("");   
+                      System.out.println("");   
+                      System.out.println("------------------------------------------");     
+                      System.out.println("");
+                      System.out.println("Total IF Statements (weight 1)       -   " + ifCount);
+                      System.out.println("Total CATCH Statements (weight 1)    -   " + catchCount);
+                      System.out.println("Total FOR Statements (weight 2)      -   " + forCount);
+                      System.out.println("Total WHILE Statements (weight 2)    -   " + whileCount);
+                      System.out.println("Total DO WHILE Statements (weight 2) -   " + doWhileCount);
+                      System.out.println("");  
+                      System.out.println("TOTAL SIZE COMPLEXITY (CTC VALUE)    -   " + totalcomplexity);
+                      System.out.println("");  
+                      System.out.println("------------------------------------------"); 
+                                
 	}
 
 	public static void main(String[] args) {
-		CTCandCNC complexity = new CTCandCNC();
+		CTC complexity = new CTC();
 		complexity.readFileItem();
 	}
 
