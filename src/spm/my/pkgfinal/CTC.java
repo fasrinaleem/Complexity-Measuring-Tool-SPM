@@ -23,15 +23,17 @@ public class CTC {
         int forCount = 0;
         int whileCount = 0;
         int doWhileCount = 0;
+        int caseCount = 0;
 	int totalcomplexity = 0;
         
         private static File file;
 	private static final List<String> invalidVariablesList = new ArrayList<>();
 	private static final List<String> ifValidVariablesList = new ArrayList<>();
-	private static final List<String> catchValidVariablesList = new ArrayList<>();
 	private static final List<String> forValidVariablesList = new ArrayList<>();
 	private static final List<String> whileValidVariablesList = new ArrayList<>();
 	private static final List<String> doWhileValidVariablesList = new ArrayList<>();
+	private static final List<String> catchValidVariablesList = new ArrayList<>();
+	private static final List<String> switchValidVariablesList = new ArrayList<>();
 
 	private static String[] ifCatchKeywords = {"if","catch"}; // find the if and catch keywords
 	private static String[] forWhileKeywords = {"for","while","do-while"};// find the for ,while and do-while keywords
@@ -44,7 +46,7 @@ public class CTC {
 	private static final List<String> caseKeywordsList = Arrays.asList(caseKeywords);
     
 	public CTC() {
-		this.file = new File("C:\\Users\\jahrin\\Documents\\NetBeansProjects\\Measuring_Complexity_Size\\src\\Fasrin_CTCandCNC\\MyException.java");
+		this.file = new File("C:\\Users\\Fasrin\\Documents\\NetBeansProjects\\SPM - My Final\\src\\Fasrin_CTCandCNC\\MyException.java");
 	}
 
 	public boolean isNumeric(String strNum) {
@@ -91,20 +93,7 @@ public class CTC {
                                                         ifCount = ifCount + 1;
                                                         lineComplexity = lineComplexity+1;
 						}
-					}
-					if ( word.contains("catch")) {
-						if (isNumeric(word)) {
-							catchValidVariablesList.add(word);
-                                                         complexity = complexity + 1;
-                                                         catchCount = catchCount + 1;
-                                                        lineComplexity = lineComplexity+1;
-						} else if (ifCatchKeywordsList.contains(word)) {
-							catchValidVariablesList.add(word);
-                                                         complexity = complexity + 1;
-                                                         catchCount = catchCount + 1;
-                                                        lineComplexity = lineComplexity+1;
-						}
-					}   
+					}  
 					if ( word.contains("for")) {
 						if (isNumeric(word)) {
 							forValidVariablesList.add(word);
@@ -143,6 +132,32 @@ public class CTC {
                                                          doWhileCount = doWhileCount + 1;
                                                         lineComplexity = lineComplexity+2;
 						}
+					}
+                                        if ( word.contains("catch")) {
+						if (isNumeric(word)) {
+							catchValidVariablesList.add(word);
+                                                         complexity = complexity + 1;
+                                                         catchCount = catchCount + 1;
+                                                        lineComplexity = lineComplexity+1;
+						} else if (ifCatchKeywordsList.contains(word)) {
+							catchValidVariablesList.add(word);
+                                                         complexity = complexity + 1;
+                                                         catchCount = catchCount + 1;
+                                                        lineComplexity = lineComplexity+1;
+						}
+					} 
+                                        if ( word.contains("switch")) {
+						if (isNumeric(word)) {
+							switchValidVariablesList.add(word);
+                                                         complexity = complexity + caseCount;
+                                                         caseCount = caseCount + 1;
+                                                        lineComplexity = lineComplexity+1;
+						} else if (ifCatchKeywordsList.contains(word)) {
+							switchValidVariablesList.add(word);
+                                                         complexity = complexity + caseCount;
+                                                         caseCount = caseCount + 1;
+                                                        lineComplexity = lineComplexity+1;
+						}
 					} 
 				}
 
@@ -152,6 +167,7 @@ public class CTC {
                                 System.out.println("FOR Complexity : " + forValidVariablesList.size());
                                 System.out.println("WHILE Complexity : " + whileValidVariablesList.size());
                                 System.out.println("DO-WHILE Complexity : " + doWhileValidVariablesList.size());
+                                System.out.println("SWITCH CASE Complexity : " + switchValidVariablesList.size());
                                 System.out.println(" ");
                                 System.out.println("Line Number "+lineCount+" Complecxity : " +lineComplexity );
                                 
@@ -160,6 +176,7 @@ public class CTC {
                                 forValidVariablesList.clear();
                                 whileValidVariablesList.clear();
                                 doWhileValidVariablesList.clear();
+                                switchValidVariablesList.clear();
         lineComplexity = 0;
 			}
                         totalcomplexity = totalcomplexity+complexity;
@@ -179,6 +196,7 @@ public class CTC {
                       System.out.println("Total FOR Statements (weight 2)      -   " + forCount);
                       System.out.println("Total WHILE Statements (weight 2)    -   " + whileCount);
                       System.out.println("Total DO WHILE Statements (weight 2) -   " + doWhileCount);
+                      System.out.println("Total SWITCH CASE Statements (weight n) -   " + caseCount);
                       System.out.println("");  
                       System.out.println("TOTAL SIZE COMPLEXITY (CTC VALUE)    -   " + totalcomplexity);
                       System.out.println("");  

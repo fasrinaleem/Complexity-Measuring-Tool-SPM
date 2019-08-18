@@ -22,7 +22,7 @@ public class CNC {
     
     public static void main(String[] args) throws IOException{
         try{
-            FileInputStream fileStream = new FileInputStream("C:\\Users\\jahrin\\Documents\\NetBeansProjects\\Measuring_Complexity_Size\\src\\Fasrin_CTCandCNC\\MyException.java");
+            FileInputStream fileStream = new FileInputStream("C:\\Users\\Fasrin\\Documents\\NetBeansProjects\\SPM - My Final\\src\\Fasrin_CTCandCNC\\MyException.java");
             DataInputStream in = new DataInputStream(fileStream);
             BufferedReader br = new BufferedReader(new InputStreamReader(in));
             String stringLine;
@@ -35,21 +35,25 @@ public class CNC {
             int f1 = 0;
             int f2 = 0;
             int Sum = 0;
+            int lineWeight = 0;
             
             int lineNo = 0;
             
             while((stringLine = br.readLine()) != null){
-                
+                lineWeight = 0;
                 lineNo++;                
                 if(stringLine.contains("for")){
                     countFor++;
                     Sum = Sum+countFor;
+                    lineWeight = lineWeight+countFor;
                 }
                 if(stringLine.contains("if")){
                     countIf++;
                     Sum = Sum+countIf;
+                    lineWeight = lineWeight+countIf;
                 }  
                 
+            System.out.println("Line No : " +lineNo+ " Weight : " +lineWeight);
             }  
             
             System.out.println("=========List==========");
