@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package spm.my.pkgfinal;
+package Fasrin_CTCandCNC;
 
 import java.io.BufferedReader;
 import java.io.DataInputStream;
@@ -22,7 +22,7 @@ public class CNC {
     
     public static void main(String[] args) throws IOException{
         try{
-            FileInputStream fileStream = new FileInputStream("C:\\Users\\Fasrin\\Documents\\NetBeansProjects\\SPM - My Final\\src\\spm\\my\\pkgfinal\\MyException.java");
+            FileInputStream fileStream = new FileInputStream("C:\\Users\\jahrin\\Documents\\NetBeansProjects\\Measuring_Complexity_Size\\src\\Fasrin_CTCandCNC\\MyException.java");
             DataInputStream in = new DataInputStream(fileStream);
             BufferedReader br = new BufferedReader(new InputStreamReader(in));
             String stringLine;
@@ -30,7 +30,6 @@ public class CNC {
             int countIf = 0;
             int weightForIf = 1;
             int f = 0;
-            int Sum2 = 0;
             
             int i = 0;
             int f1 = 0;
@@ -43,33 +42,20 @@ public class CNC {
                 
                 lineNo++;                
                 if(stringLine.contains("for")){
-                    f1++;
                     countFor++;
-                    Sum = Sum+f1;
+                    Sum = Sum+countFor;
                 }
                 if(stringLine.contains("if")){
-                    f2++;
                     countIf++;
-                    Sum = Sum+f2;
+                    Sum = Sum+countIf;
                 }  
-
-                if(stringLine.contains("if")){
-                    f++;
-                    Sum2 = Sum2+weightForIf;
-                    if(f>=1){
-                        weightForIf++;
-                        Sum2 = Sum2+weightForIf;
-                    }
-                    weightForIf = 1;
-                }
                 
             }  
             
             System.out.println("=========List==========");
             System.out.println("Total counts of FOR statements : " +countFor);
             System.out.println("Total counts of IF statements : " +countIf);
-            System.out.println("Total Sum of weight: "+Sum);
-            System.out.println("Total Sum2 of weight: "+Sum2);
+            System.out.println("Total SUM of weight: "+Sum);
             
             in.close();
             // TODO code application logic here

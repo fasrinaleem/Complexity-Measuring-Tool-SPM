@@ -1,3 +1,5 @@
+package Fasrin_CTCandCNC;
+
 public class MyException {
 
     public static long fibonacci(long number) {

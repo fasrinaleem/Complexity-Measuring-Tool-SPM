@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package spm.my.pkgfinal;
+package Fasrin_CTCandCNC;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -44,7 +44,7 @@ public class CTC {
 	private static final List<String> caseKeywordsList = Arrays.asList(caseKeywords);
     
 	public CTC() {
-		this.file = new File("C:\\Users\\Fasrin\\Documents\\NetBeansProjects\\SPM - My Final\\src\\spm\\my\\pkgfinal\\MyException.java");
+		this.file = new File("C:\\Users\\jahrin\\Documents\\NetBeansProjects\\Measuring_Complexity_Size\\src\\Fasrin_CTCandCNC\\MyException.java");
 	}
 
 	public boolean isNumeric(String strNum) {
@@ -63,6 +63,7 @@ public class CTC {
 		int lineCount = 0;
 		int count = 0;
 
+        int lineComplexity = 0;
 		try (Scanner scanner = new Scanner(file)) {
 
 			while (scanner.hasNextLine()) {
@@ -83,10 +84,12 @@ public class CTC {
 							ifValidVariablesList.add(word);
                                                         complexity = complexity + 1;
                                                         ifCount = ifCount + 1;
+                                                        lineComplexity = lineComplexity+1;
 						} else if (ifCatchKeywordsList.contains(word)) {
 							ifValidVariablesList.add(word);
                                                          complexity = complexity + 1;
                                                         ifCount = ifCount + 1;
+                                                        lineComplexity = lineComplexity+1;
 						}
 					}
 					if ( word.contains("catch")) {
@@ -94,10 +97,12 @@ public class CTC {
 							catchValidVariablesList.add(word);
                                                          complexity = complexity + 1;
                                                          catchCount = catchCount + 1;
+                                                        lineComplexity = lineComplexity+1;
 						} else if (ifCatchKeywordsList.contains(word)) {
 							catchValidVariablesList.add(word);
                                                          complexity = complexity + 1;
                                                          catchCount = catchCount + 1;
+                                                        lineComplexity = lineComplexity+1;
 						}
 					}   
 					if ( word.contains("for")) {
@@ -105,10 +110,12 @@ public class CTC {
 							forValidVariablesList.add(word);
                                                          complexity = complexity + 2;
                                                          forCount = forCount + 1;
+                                                        lineComplexity = lineComplexity+2;
 						} else if (forWhileKeywordsList.contains(word)) {
 							forValidVariablesList.add(word);
                                                          complexity = complexity + 2;
                                                          forCount = forCount + 1;
+                                                        lineComplexity = lineComplexity+2;
 						}
 					}
 					if ( word.contains("while")) {
@@ -116,10 +123,12 @@ public class CTC {
 							whileValidVariablesList.add(word);
                                                          complexity = complexity + 2;
                                                          whileCount = whileCount + 1;
+                                                        lineComplexity = lineComplexity+2;
 						} else if (forWhileKeywordsList.contains(word)) {
 							whileValidVariablesList.add(word);
                                                          complexity = complexity + 2;
                                                          whileCount = whileCount + 1;
+                                                        lineComplexity = lineComplexity+2;
 						}
 					}
 					if ( word.contains("do while")) {
@@ -127,10 +136,12 @@ public class CTC {
 							doWhileValidVariablesList.add(word);
                                                          complexity = complexity + 2;
                                                          doWhileCount = doWhileCount + 1;
+                                                        lineComplexity = lineComplexity+2;
 						} else if (forWhileKeywordsList.contains(word)) {
 							doWhileValidVariablesList.add(word);
                                                          complexity = complexity + 2;
                                                          doWhileCount = doWhileCount + 1;
+                                                        lineComplexity = lineComplexity+2;
 						}
 					} 
 				}
@@ -141,16 +152,19 @@ public class CTC {
                                 System.out.println("FOR Complexity : " + forValidVariablesList.size());
                                 System.out.println("WHILE Complexity : " + whileValidVariablesList.size());
                                 System.out.println("DO-WHILE Complexity : " + doWhileValidVariablesList.size());
+                                System.out.println(" ");
+                                System.out.println("Line Number "+lineCount+" Complecxity : " +lineComplexity );
                                 
-                      
 				ifValidVariablesList.clear();
                                 catchValidVariablesList.clear();
                                 forValidVariablesList.clear();
                                 whileValidVariablesList.clear();
                                 doWhileValidVariablesList.clear();
+        lineComplexity = 0;
 			}
                         totalcomplexity = totalcomplexity+complexity;
-                         
+                        
+        lineComplexity = 0;
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
