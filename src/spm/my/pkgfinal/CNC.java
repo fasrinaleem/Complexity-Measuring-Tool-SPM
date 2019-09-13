@@ -22,7 +22,7 @@ public class CNC {
     
     public static void main(String[] args) throws IOException{
         try{
-            FileInputStream fileStream = new FileInputStream("C:\\Users\\Fasrin\\Documents\\NetBeansProjects\\SPM - My Final\\src\\Fasrin_CTCandCNC\\MyException.java");
+            FileInputStream fileStream = new FileInputStream("C:\\Users\\Fasrin\\Desktop\\Year 03 Semester 02\\SPM\\Group\\Sprint 02\\Measuring_Complexity_Size\\src\\MyException.java");
             DataInputStream in = new DataInputStream(fileStream);
             BufferedReader br = new BufferedReader(new InputStreamReader(in));
             String stringLine;

@@ -36,17 +36,19 @@ public class CTC {
 	private static final List<String> switchValidVariablesList = new ArrayList<>();
 
 	private static String[] ifCatchKeywords = {"if","catch"}; // find the if and catch keywords
-	private static String[] forWhileKeywords = {"for","while","do-while"};// find the for ,while and do-while keywords
+	private static String[] forWhileKeywords = {"for","do"};// find the for , do-while keywords
+        private static String[] whileKeywords = {"while"}; // find the while keywords
 	private static String[] operatorKeywords = {"&&","and","||","&","|"}; //find the these operations  keywords
 	private static String[] caseKeywords = {"case"}; ////find the case(switch = N number of case)  keywords
 	
 	private static final List<String> ifCatchKeywordsList = Arrays.asList(ifCatchKeywords);
 	private static final List<String> forWhileKeywordsList = Arrays.asList(forWhileKeywords);
+        private static final List<String> whileKeywordsList = Arrays.asList(whileKeywords);
 	private static final List<String> operatorKeywordsList = Arrays.asList(operatorKeywords);
 	private static final List<String> caseKeywordsList = Arrays.asList(caseKeywords);
     
 	public CTC() {
-		this.file = new File("C:\\Users\\Fasrin\\Documents\\NetBeansProjects\\SPM - My Final\\src\\Fasrin_CTCandCNC\\MyException.java");
+		this.file = new File("C:\\Users\\Fasrin\\Desktop\\Year 03 Semester 02\\SPM\\Group\\Sprint 02\\Measuring_Complexity_Size\\src\\MyException.java");
 	}
 
 	public boolean isNumeric(String strNum) {
@@ -113,20 +115,20 @@ public class CTC {
                                                          complexity = complexity + 2;
                                                          whileCount = whileCount + 1;
                                                         lineComplexity = lineComplexity+2;
-						} else if (forWhileKeywordsList.contains(word)) {
+						} else if (whileKeywordsList.contains("while")) {
 							whileValidVariablesList.add(word);
                                                          complexity = complexity + 2;
                                                          whileCount = whileCount + 1;
                                                         lineComplexity = lineComplexity+2;
 						}
 					}
-					if ( word.contains("do while")) {
+					if ( word.contains("do")) {
 						if (isNumeric(word)) {
 							doWhileValidVariablesList.add(word);
                                                          complexity = complexity + 2;
                                                          doWhileCount = doWhileCount + 1;
                                                         lineComplexity = lineComplexity+2;
-						} else if (forWhileKeywordsList.contains(word)) {
+						} else if (forWhileKeywordsList.contains("do")) {
 							doWhileValidVariablesList.add(word);
                                                          complexity = complexity + 2;
                                                          doWhileCount = doWhileCount + 1;
@@ -139,20 +141,20 @@ public class CTC {
                                                          complexity = complexity + 1;
                                                          catchCount = catchCount + 1;
                                                         lineComplexity = lineComplexity+1;
-						} else if (ifCatchKeywordsList.contains(word)) {
+						} else if (ifCatchKeywordsList.contains("catch")) {
 							catchValidVariablesList.add(word);
                                                          complexity = complexity + 1;
                                                          catchCount = catchCount + 1;
                                                         lineComplexity = lineComplexity+1;
 						}
 					} 
-                                        if ( word.contains("switch")) {
+                                        if ( word.contains("case")) {
 						if (isNumeric(word)) {
 							switchValidVariablesList.add(word);
                                                          complexity = complexity + caseCount;
                                                          caseCount = caseCount + 1;
                                                         lineComplexity = lineComplexity+1;
-						} else if (ifCatchKeywordsList.contains(word)) {
+						} else if (caseKeywordsList.contains("case")) {
 							switchValidVariablesList.add(word);
                                                          complexity = complexity + caseCount;
                                                          caseCount = caseCount + 1;
@@ -163,13 +165,13 @@ public class CTC {
 
 				System.out.println("Token : " + ifValidVariablesList + catchValidVariablesList + forValidVariablesList + whileValidVariablesList + doWhileValidVariablesList);
 				System.out.println("IF Complexity : " + ifValidVariablesList.size());
-                                System.out.println("CATCH Complexity : " + catchValidVariablesList.size());
+                                System.out.println("TRY CATCH Complexity : " + catchValidVariablesList.size());
                                 System.out.println("FOR Complexity : " + forValidVariablesList.size());
                                 System.out.println("WHILE Complexity : " + whileValidVariablesList.size());
-                                System.out.println("DO-WHILE Complexity : " + doWhileValidVariablesList.size());
+                                System.out.println("DO Complexity : " + doWhileValidVariablesList.size());
                                 System.out.println("SWITCH CASE Complexity : " + switchValidVariablesList.size());
                                 System.out.println(" ");
-                                System.out.println("Line Number "+lineCount+" Complecxity : " +lineComplexity );
+                                System.out.println("Line Number "+lineCount+" Complexity : " +lineComplexity );
                                 
 				ifValidVariablesList.clear();
                                 catchValidVariablesList.clear();
@@ -189,18 +191,18 @@ public class CTC {
                             
                       System.out.println("");   
                       System.out.println("");   
-                      System.out.println("------------------------------------------");     
+                      System.out.println("-----------------------------------------------");     
                       System.out.println("");
-                      System.out.println("Total IF Statements (weight 1)       -   " + ifCount);
-                      System.out.println("Total CATCH Statements (weight 1)    -   " + catchCount);
-                      System.out.println("Total FOR Statements (weight 2)      -   " + forCount);
-                      System.out.println("Total WHILE Statements (weight 2)    -   " + whileCount);
-                      System.out.println("Total DO WHILE Statements (weight 2) -   " + doWhileCount);
-                      System.out.println("Total SWITCH CASE Statements (weight n) -   " + caseCount);
+                      System.out.println("Total IF Statements (weight 1)            -   " + ifCount);
+                      System.out.println("Total TRY CATCH Statements (weight 1)     -   " + catchCount);
+                      System.out.println("Total FOR Statements (weight 2)           -   " + forCount);
+                      System.out.println("Total WHILE Statements (weight 2)         -   " + whileCount);
+                      System.out.println("Total DO Statements (weight 2)            -   " + doWhileCount);
+                      System.out.println("Total SWITCH CASE Statements (weight n)   -   " + caseCount);
                       System.out.println("");  
-                      System.out.println("TOTAL SIZE COMPLEXITY (CTC VALUE)    -   " + totalcomplexity);
+                      System.out.println("TOTAL SIZE COMPLEXITY (CTC VALUE)         -   " + totalcomplexity);
                       System.out.println("");  
-                      System.out.println("------------------------------------------"); 
+                      System.out.println("-----------------------------------------------"); 
                                 
 	}
 
