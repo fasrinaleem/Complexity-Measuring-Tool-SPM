@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Fasrin_CTCandCNC;
+package com.fasrin.Fasrin_CTCandCNC;
 
 import java.io.BufferedReader;
 import java.io.DataInputStream;
@@ -22,7 +22,7 @@ public class CNC {
     
     public static void main(String[] args) throws IOException{
         try{
-            FileInputStream fileStream = new FileInputStream("C:\\Users\\Fasrin\\Desktop\\Year 03 Semester 02\\SPM\\Group\\Sprint 02\\Measuring_Complexity_Size\\src\\MyException.java");
+            FileInputStream fileStream = new FileInputStream("C:\\Users\\Fasrin\\Desktop\\Year 03 Semester 02\\SPM\\Group\\Sprint 02\\Version 02\\MyException.java");
             DataInputStream in = new DataInputStream(fileStream);
             BufferedReader br = new BufferedReader(new InputStreamReader(in));
             String stringLine;

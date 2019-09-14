@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Fasrin_CTCandCNC;
+package com.fasrin.Fasrin_CTCandCNC;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -24,6 +24,7 @@ public class CTC {
         int whileCount = 0;
         int doWhileCount = 0;
         int caseCount = 0;
+        int operatorCount = 0;
 	int totalcomplexity = 0;
         
         private static File file;
@@ -34,6 +35,7 @@ public class CTC {
 	private static final List<String> doWhileValidVariablesList = new ArrayList<>();
 	private static final List<String> catchValidVariablesList = new ArrayList<>();
 	private static final List<String> switchValidVariablesList = new ArrayList<>();
+        private static final List<String> operatorValidVariablesList = new ArrayList<>();
 
 	private static String[] ifCatchKeywords = {"if","catch"}; // find the if and catch keywords
 	private static String[] forWhileKeywords = {"for","do"};// find the for , do-while keywords
@@ -48,9 +50,11 @@ public class CTC {
 	private static final List<String> caseKeywordsList = Arrays.asList(caseKeywords);
     
 	public CTC() {
-		this.file = new File("C:\\Users\\Fasrin\\Desktop\\Year 03 Semester 02\\SPM\\Group\\Sprint 02\\Measuring_Complexity_Size\\src\\MyException.java");
-	}
-
+		this.file = new File("C:\\Users\\Fasrin\\Desktop\\Year 03 Semester 02\\SPM\\Group\\Sprint 02\\Version 02\\MyException.java");
+	}    
+        
+             
+        
 	public boolean isNumeric(String strNum) {
 		try {
 			if (Double.isNaN(Double.parseDouble(strNum)))
@@ -156,20 +160,48 @@ public class CTC {
                                                         lineComplexity = lineComplexity+1;
 						} else if (caseKeywordsList.contains("case")) {
 							switchValidVariablesList.add(word);
-                                                         complexity = complexity + caseCount;
+                                                         complexity = complexity + 1;
                                                          caseCount = caseCount + 1;
                                                         lineComplexity = lineComplexity+1;
 						}
 					} 
+                                        if ( word.contains("&&")) {
+						if (isNumeric(word)) {
+							operatorValidVariablesList.add(word);
+                                                         complexity = complexity + operatorCount;
+                                                         operatorCount = operatorCount + 1;
+                                                        lineComplexity = lineComplexity+1;
+						} else if (operatorKeywordsList.contains("&&")) {
+							operatorValidVariablesList.add(word);
+                                                         complexity = complexity + 1;
+                                                         operatorCount = operatorCount + 1;
+                                                        lineComplexity = lineComplexity+1;
+						}
+					}
+                                        if ( word.contains("||")) {
+						if (isNumeric(word)) {
+							operatorValidVariablesList.add(word);
+                                                         complexity = complexity + operatorCount;
+                                                         operatorCount = operatorCount + 1;
+                                                        lineComplexity = lineComplexity+1;
+						} else if (operatorKeywordsList.contains("||")) {
+							operatorValidVariablesList.add(word);
+                                                         complexity = complexity + 1;
+                                                         operatorCount = operatorCount + 1;
+                                                        lineComplexity = lineComplexity+1;
+						}
+					}
+                                        
 				}
 
-				System.out.println("Token : " + ifValidVariablesList + catchValidVariablesList + forValidVariablesList + whileValidVariablesList + doWhileValidVariablesList);
+				System.out.println("Token : " + ifValidVariablesList + catchValidVariablesList + forValidVariablesList + whileValidVariablesList + doWhileValidVariablesList+switchValidVariablesList+operatorValidVariablesList);
 				System.out.println("IF Complexity : " + ifValidVariablesList.size());
                                 System.out.println("TRY CATCH Complexity : " + catchValidVariablesList.size());
                                 System.out.println("FOR Complexity : " + forValidVariablesList.size());
                                 System.out.println("WHILE Complexity : " + whileValidVariablesList.size());
                                 System.out.println("DO Complexity : " + doWhileValidVariablesList.size());
                                 System.out.println("SWITCH CASE Complexity : " + switchValidVariablesList.size());
+                                System.out.println("OPERATOR Complexity : " + operatorValidVariablesList.size());
                                 System.out.println(" ");
                                 System.out.println("Line Number "+lineCount+" Complexity : " +lineComplexity );
                                 
@@ -179,6 +211,7 @@ public class CTC {
                                 whileValidVariablesList.clear();
                                 doWhileValidVariablesList.clear();
                                 switchValidVariablesList.clear();
+                                operatorValidVariablesList.clear();
         lineComplexity = 0;
 			}
                         totalcomplexity = totalcomplexity+complexity;
@@ -198,6 +231,7 @@ public class CTC {
                       System.out.println("Total FOR Statements (weight 2)           -   " + forCount);
                       System.out.println("Total WHILE Statements (weight 2)         -   " + whileCount);
                       System.out.println("Total DO Statements (weight 2)            -   " + doWhileCount);
+                      System.out.println("Total OPERATOR Statements (weight 1)      -   " + operatorCount);
                       System.out.println("Total SWITCH CASE Statements (weight n)   -   " + caseCount);
                       System.out.println("");  
                       System.out.println("TOTAL SIZE COMPLEXITY (CTC VALUE)         -   " + totalcomplexity);
