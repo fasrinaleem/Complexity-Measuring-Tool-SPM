@@ -46,7 +46,7 @@ public class Measuring_Complexity_Size {
         try {
 
           //  Pattern pattern = Pattern.compile("\"([^\"]*)\"");
-             fileLocation= "C:\\Users\\Fasrin\\Desktop\\Year 03 Semester 02\\SPM\\Group\\Sprint 02\\Version 02\\MyException.java";
+             fileLocation= "C:\\Users\\Fasrin\\Desktop\\Files\\MyException.java";
              
            // fileLocation = "C:\\Users\\jahrin\\Desktop\\MyException.java";
             
@@ -89,7 +89,7 @@ public class Measuring_Complexity_Size {
                         } else {
                             if (arithmetic[i].equals(words)) {
                                 arr.add(words);
-                                System.out.println(words);
+                             //   System.out.println(words);
                                 complexity++;
                             }
                         }
@@ -102,7 +102,7 @@ public class Measuring_Complexity_Size {
                         } else {
                             if (relation[i].equals(words)) {
                                 arr.add(words);
-                                             System.out.println(words); 
+                         //                    System.out.println(words); 
                                 complexity = complexity + 1;
                             }
                         }
@@ -115,7 +115,7 @@ public class Measuring_Complexity_Size {
                         } else {
                             if (logical[i].equals(words)) {
                                 arr.add(words);
-                                              System.out.println(words);
+                                           //   System.out.println(words);
                                 complexity = complexity + 1;
                             }
                         }
@@ -128,7 +128,7 @@ public class Measuring_Complexity_Size {
                         } else {
                             if (bitwise[i].equals(words)) {
                                 arr.add(words);
-                                              System.out.println(words);
+                                         //     System.out.println(words);
                                 complexity = complexity + 1;
                             }
                         }
@@ -141,7 +141,7 @@ public class Measuring_Complexity_Size {
                         } else {
                             if (misc[i].equals(words)) {
                                 arr.add(words);
-                                              System.out.println(words);
+                                       //       System.out.println(words);
                                 complexity = complexity + 1;
                             }
                         }
@@ -154,7 +154,7 @@ public class Measuring_Complexity_Size {
                         } else {
                             if (assignment[i].equals(words)) {
                                 arr.add(words);
-                                              System.out.println(words);
+                                    //          System.out.println(words);
                                 complexity = complexity + 1;
                             }
                         }
@@ -167,7 +167,7 @@ public class Measuring_Complexity_Size {
                         } else {
                             if (keywords[i].equals(words)) {
                                 arr.add(words);
-                                              System.out.println(words);
+                               //               System.out.println(words);
                                 complexity = complexity + 1;
                             }
                         }
@@ -180,7 +180,7 @@ public class Measuring_Complexity_Size {
                         } else {
                             if (manipulators[i].equals(words)) {
                                 arr.add(words);
-                                              System.out.println(words);
+                             //                 System.out.println(words);
                                 complexity = complexity + 1;
                             }
                         }
@@ -193,7 +193,7 @@ public class Measuring_Complexity_Size {
                         } else {
                             if (invalidStringVariables[i].equals(words)) {
                                 arr.add(words);
-                                              System.out.println(words);
+                                 //             System.out.println(words);
                                 complexity = 0;
                             }
                         }
@@ -206,7 +206,7 @@ public class Measuring_Complexity_Size {
                         } else {
                             if (constValueTwoVariables[i].equals(words)) {
                                 arr.add(words);
-                                              System.out.println(words);
+                              //                System.out.println(words);
                                 complexity = complexity + 2;
                             }
                         }

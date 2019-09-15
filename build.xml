@@ -7,8 +7,8 @@
 <!-- the Compile on Save feature is turned off for the project. -->
 <!-- You can turn off the Compile on Save (or Deploy on Save) setting -->
 <!-- in the project's Project Properties dialog box.-->
-<project name="SPM-Sprint_02" default="default" basedir=".">
-    <description>Builds, tests, and runs the project SPM-Sprint 02.</description>
+<project name="SPM-Sprint_02_Old" default="default" basedir=".">
+    <description>Builds, tests, and runs the project SPM-Sprint 02_Old.</description>
     <import file="nbproject/build-impl.xml"/>
     <!--
 

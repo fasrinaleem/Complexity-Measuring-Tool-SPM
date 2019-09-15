@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package com.fasrin.Fasrin_CTCandCNC;
-
 import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.FileInputStream;
@@ -22,7 +21,7 @@ public class CNC {
     
     public static void main(String[] args) throws IOException{
         try{
-            FileInputStream fileStream = new FileInputStream("C:\\Users\\Fasrin\\Desktop\\Year 03 Semester 02\\SPM\\Group\\Sprint 02\\Version 02\\MyException.java");
+            FileInputStream fileStream = new FileInputStream("C:\\Users\\Fasrin\\Desktop\\Files\\MyException.java");
             DataInputStream in = new DataInputStream(fileStream);
             BufferedReader br = new BufferedReader(new InputStreamReader(in));
             String stringLine;
@@ -66,5 +65,82 @@ public class CNC {
             }catch (FileNotFoundException ex) {
             Logger.getLogger(CNC.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        
+
+//Calculating CNC
+//Calculating Complexity due to nesting of Control Structures
+	
+//	public static List<ProgramStatementComplexity> calculateComplexityDueToNestingLevels(ComplexityMeasurements cm) throws IOException , NullPointerException{
+//		
+//		BufferedReader br= cm.getBr();
+//		String statement = null;
+//		
+//		String nestedControlVariable = null;
+//		int leftCurlyBraceCount = 0;
+//		int rightCurlyBraceCount = 0;
+//		int lineCount = 1;
+//		int nestedCount = -1;
+//		List<ProgramStatementComplexity> programStatements = new ArrayList<>();
+//	    statement = br.readLine();
+//		
+//		while(statement != null) {
+//			
+//			//check whether the line contains public or class keywords
+//			if(!statement.contains("\"")) {
+//				if(statement.contains((" "))){
+//					
+//					String[] parts = statement.split(" ");
+//					
+//					if(parts[0].equalsIgnoreCase(Keywords.PUBLIC) || parts[0].equalsIgnoreCase(Keywords.CLASS)) {
+//						nestedCount = 0;
+//					}
+//				}
+//			}
+//			// check if the line contains for,if,do, while keywords
+//			if(statement.contains(" ")) {
+//				String[] parts = statement.split(" ");
+//				parts[0] = parts[0].trim();
+//				
+//				if(parts[0].equalsIgnoreCase(Keywords.FOR) || parts[0].equalsIgnoreCase(Keywords.IF) || parts[0].equalsIgnoreCase(Keywords.DO) || parts[0].equalsIgnoreCase(Keywords.WHILE)) {
+//					
+//					//checking for nested control variable 
+//					if(parts[0].equalsIgnoreCase(nestedControlVariable) || nestedControlVariable == null) {
+//						nestedCount += 1 ;
+//						nestedControlVariable = parts[0];
+//						leftCurlyBraceCount += 1;						
+//					}
+//				}
+//			}
+//			
+//			//check for right curly braces if the nested control variable is not null
+//			if(statement.trim().contains("}") && (nestedControlVariable != null)) {
+//				rightCurlyBraceCount ++ ;
+//				
+//				if((rightCurlyBraceCount - leftCurlyBraceCount) == 1) {
+//					nestedCount -- ;
+//				}
+//			}
+//			
+//			if(nestedCount <= 0) {
+//				nestedCount = 0;
+//			}
+//			System.out.println("Nested count for line no. " + lineCount + ": " + nestedCount);
+//			lineCount++;
+//			
+//			//adding the nesting level count for the given line
+//			ProgramStatementComplexity programStatementComplexity = new ProgramStatementComplexity();
+//			programStatementComplexity.setLineNumber(lineCount);
+//			programStatementComplexity.setNestedLevelCount(nestedCount);
+//			
+//			programStatements.add(programStatementComplexity);
+//		}
+//		return programStatements;
+//		
+//
+//	}
+
+
+        
     }
 }

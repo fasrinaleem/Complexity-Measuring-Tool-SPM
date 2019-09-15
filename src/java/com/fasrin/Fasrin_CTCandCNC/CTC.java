@@ -50,7 +50,7 @@ public class CTC {
 	private static final List<String> caseKeywordsList = Arrays.asList(caseKeywords);
     
 	public CTC() {
-		this.file = new File("C:\\Users\\Fasrin\\Desktop\\Year 03 Semester 02\\SPM\\Group\\Sprint 02\\Version 02\\MyException.java");
+		this.file = new File("C:\\Users\\Fasrin\\Desktop\\Files\\MyException.java");
 	}    
         
              

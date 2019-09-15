@@ -58,7 +58,7 @@ public class FileUploadHandler extends HttpServlet {
                         }
                     }
                 } else if (fileItem.getSize() > 0) {
-                    fileItem.write(new File("C:\\Users\\Fasrin\\Desktop\\FileUpload\\" + fileItem.getName()));
+                    fileItem.write(new File("C:\\Users\\Fasrin\\Desktop\\Files\\" + fileItem.getName()));
                 }
             }
         } catch (Exception e) {
